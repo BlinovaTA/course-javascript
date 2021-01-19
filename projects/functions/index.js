@@ -61,8 +61,10 @@ function returnFnResult(fn) {
  */
 function returnCounter(number = 0) {
   let counter = 0;
+
   return function () {
     counter++;
+
     return number + counter;
   };
 }
@@ -78,6 +80,7 @@ function returnCounter(number = 0) {
  */
 function returnArgumentsArray() {
   const arr = [];
+
   for (let i = 0; i < arguments.length; i++) {
     arr.push(arguments[i]);
   }
