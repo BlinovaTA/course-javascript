@@ -31,20 +31,9 @@ function delayPromise(seconds) {
  */
 function loadAndSortTowns() {
   return new Promise((resolve) => {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
-
-    xhr.open(
-      'GET',
-      'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json',
-      true
-    );
-
-    xhr.send();
-
-    xhr.onload = () => {
-      resolve(xhr.response.sort((a, b) => (a.name > b.name ? 1 : -1)));
-    };
+    fetch('https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json')
+      .then((response) => response.json())
+      .then((towns) => resolve(towns.sort((a, b) => (a.name > b.name ? 1 : -1))));
   });
 }
 
