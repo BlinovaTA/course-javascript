@@ -32,12 +32,14 @@ function delayPromise(seconds) {
 function loadAndSortTowns() {
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+
     xhr.open(
       'GET',
       'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json',
       true
     );
-    xhr.responseType = 'json';
+
     xhr.send();
 
     xhr.onload = () => {
