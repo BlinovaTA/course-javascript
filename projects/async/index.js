@@ -46,13 +46,13 @@ const loadingPepare = () => {
   filterBlock.style.display = 'none';
 };
 
-const townsIsLoaded = () => {
+const showFilterBlock = () => {
   loadingBlock.style.display = 'none';
   filterBlock.style.display = 'block';
   loadingFailedBlock.style.display = 'none';
 };
 
-const townsNotLoaded = () => {
+const showErrorWithRetryButton = () => {
   loadingBlock.style.display = 'none';
   loadingFailedBlock.firstElementChild.style.display = 'block';
   retryButton.textContent = 'Повторить';
@@ -65,9 +65,9 @@ const loadTowns = async () => {
 
   try {
     towns = await loadAndSortTowns();
-    townsIsLoaded();
+    showFilterBlock();
   } catch (e) {
-    townsNotLoaded();
+    showErrorWithRetryButton();
   }
 
   return towns;
